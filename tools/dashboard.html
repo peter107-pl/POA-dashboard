@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Limitless Essentials POA – team review</title>
+<style>
+  :root {
+    --cyan: #3cc8f0; --blue: #2f7fe8; --violet: #7b4fe0; --magenta: #c74ad8;
+    --grad: linear-gradient(100deg, #3cc8f0 0%, #2f7fe8 35%, #7b4fe0 70%, #c74ad8 100%);
+    --bg: #f6f6f9; --card: #fff; --fg: #16161d; --muted: #62626e; --line: #e4e4ea; --soft: #f0f0f4;
+    --done: var(--violet); --prog: var(--blue); --pend: var(--magenta); --none: #cfcfd8; --nokpi: #ececf1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111117; --card: #1a1a22; --fg: #ececf1; --muted: #9a9aa8; --line: #2c2c38; --soft: #23232d; --none: #464655; --nokpi: #2c2c38; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 1.25rem; display: grid; gap: 1rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: .75rem; min-width: 0; }
+  .card-h { padding: 1.1rem 1.25rem 0; }
+  .card-h h2 { margin: 0; font-size: 1rem; }
+  .card-h p { margin: .2rem 0 0; color: var(--muted); font-size: .8125rem; }
+  .card-c { padding: 1rem 1.25rem 1.25rem; display: grid; gap: .75rem; }
+  .hero { padding: 1.4rem 1.5rem; position: relative; overflow: hidden; display: grid; gap: .75rem; }
+  .hero::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--grad); }
+  .badge { display: inline-flex; width: fit-content; border-radius: 99px; padding: .15rem .65rem; font-size: .75rem; font-weight: 500; color: #fff; background: var(--grad); }
+  .hero h1 { margin: 0; font-size: clamp(1.35rem, 2.6vw, 1.85rem); letter-spacing: -.02em; }
+  .hero h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { margin: 0; color: var(--muted); font-size: .95rem; max-width: 62ch; }
+  .hero b { color: var(--fg); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: .5rem .75rem; align-items: end; }
+  .field { display: grid; gap: .3rem; }
+  .field > span { font-size: .75rem; font-weight: 500; color: var(--muted); }
+  select, input[type=search], .ms-btn { height: 2.25rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--card); color: var(--fg); font: inherit; padding: 0 .7rem; min-width: 11rem; }
+  .btn { height: 2.25rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--card); color: var(--fg); font: inherit; font-weight: 500; padding: 0 .9rem; cursor: pointer; }
+  .btn:hover { background: var(--soft); }
+  .stamp { margin-left: auto; color: var(--muted); font-size: .75rem; align-self: center; }
+  .stamp b { color: var(--fg); font-weight: 500; }
+  .ms { position: relative; }
+  .ms-btn { display: inline-flex; align-items: center; justify-content: space-between; gap: .5rem; cursor: pointer; max-width: 18rem; }
+  .ms-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ms-pop { position: absolute; z-index: 5; top: calc(100% + .25rem); left: 0; min-width: 16rem; max-width: min(22rem, 90vw); background: var(--card); border: 1px solid var(--line); border-radius: .6rem; box-shadow: 0 8px 24px rgba(0,0,0,.14); padding: .375rem; }
+  .ms-list { max-height: 18rem; overflow: auto; display: grid; }
+  .ms-list label { display: flex; gap: .5rem; align-items: center; padding: .35rem .5rem; border-radius: .375rem; cursor: pointer; font-size: .8125rem; }
+  .ms-list label:hover { background: var(--soft); }
+  .ms-list input { accent-color: var(--violet); }
+  .ms-foot { display: flex; justify-content: space-between; border-top: 1px solid var(--line); margin-top: .375rem; padding-top: .375rem; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr)); gap: .75rem; }
+  .tile { padding: 1rem 1.1rem; display: grid; gap: .3rem; position: relative; overflow: hidden; }
+  .tile.accent::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--grad); }
+  .tile .lbl { color: var(--muted); font-size: .8125rem; font-weight: 500; }
+  .tile .big { font-size: 1.75rem; font-weight: 650; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .tile .sub { color: var(--muted); font-size: .75rem; }
+  .up { color: var(--violet); font-weight: 600; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: 1rem; }
+  .stack { display: grid; gap: 1rem; align-content: start; }
+  .chart { position: relative; }
+  .chart svg { display: block; width: 100%; }
+  .chart text { font-size: 12px; fill: var(--muted); }
+  .legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; color: var(--muted); font-size: .75rem; }
+  .legend i { display: inline-block; width: .65rem; height: .65rem; border-radius: 3px; margin-right: .35rem; vertical-align: -1px; }
+  .tip { position: absolute; pointer-events: none; z-index: 3; background: var(--card); border: 1px solid var(--line); border-radius: .5rem; box-shadow: 0 4px 12px rgba(0,0,0,.12); padding: .35rem .6rem; font-size: .75rem; white-space: nowrap; }
+  .tip .h { color: var(--muted); }
+  .tip i { display: inline-block; width: .5rem; height: .5rem; border-radius: 2px; margin-right: .35rem; }
+  .tools { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+  .tools input[type=search] { flex: 1; min-width: 12rem; }
+  .count { margin-left: auto; color: var(--muted); font-size: .75rem; }
+  .scroll { max-height: 36rem; overflow: auto; border: 1px solid var(--line); border-radius: .6rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .8125rem; font-variant-numeric: tabular-nums; }
+  th { position: sticky; top: 0; background: var(--card); text-align: left; border-bottom: 1px solid var(--line); height: 2.5rem; padding: 0; z-index: 1; }
+  th button { all: unset; cursor: pointer; display: block; padding: 0 .75rem; color: var(--muted); font-weight: 500; white-space: nowrap; }
+  th[aria-sort] button { color: var(--fg); }
+  th[aria-sort=ascending] button::after { content: " ↑"; } th[aria-sort=descending] button::after { content: " ↓"; }
+  td { padding: .6rem .75rem; border-bottom: 1px solid var(--line); }
+  tbody tr:hover { background: var(--soft); }
+  td.n { text-align: right; white-space: nowrap; } td.m { color: var(--muted); } td.a { min-width: 15rem; font-weight: 500; }
+  .prog { display: flex; align-items: center; gap: .5rem; min-width: 8rem; }
+  .prog span { flex: 1; height: .5rem; border-radius: 99px; background: color-mix(in oklab, var(--violet) 14%, transparent); overflow: hidden; }
+  .prog span i { display: block; height: 100%; background: var(--grad); border-radius: 99px; }
+  .prog b { font-weight: 500; min-width: 2.75rem; text-align: right; }
+  .chip { display: inline-block; border-radius: 99px; padding: .1rem .6rem; font-size: .75rem; font-weight: 500; white-space: nowrap; }
+  .s-Done { color: var(--done); background: color-mix(in oklab, var(--done) 13%, transparent); }
+  .s-In-progress { color: var(--prog); background: color-mix(in oklab, var(--prog) 13%, transparent); }
+  .s-Pending { color: var(--pend); background: color-mix(in oklab, var(--pend) 13%, transparent); }
+  .s-Not-started { color: var(--muted); background: var(--soft); }
+  .s-No-numeric-KPI { color: var(--muted); border: 1px dashed var(--line); }
+  details { padding: .9rem 1.25rem; color: var(--muted); font-size: .8125rem; }
+  summary { cursor: pointer; color: var(--fg); font-weight: 500; }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: .35rem 1rem; margin: .75rem 0 0; }
+  dt { color: var(--fg); font-weight: 500; } dd { margin: 0; }
+  @media (max-width: 40rem) { .hn { display: none; } .stamp { margin-left: 0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="card hero">
+    <span class="badge">Q4 2026 · Weekly team review</span>
+    <h1>Limitless Essentials <span>plan of action</span></h1>
+    <p><b id="h-upd">—</b> of <b id="h-tot">—</b> tactics were updated for the week of <b id="h-week">—</b>; <b id="h-done">—</b> have hit their KPI and <b id="h-idle">—</b> haven't moved yet.</p>
+  </header>
+
+  <div class="toolbar">
+    <label class="field"><span>Brand manager</span><select id="owner"></select></label>
+    <div class="field"><span>Brand</span>
+      <div class="ms" id="ms">
+        <button type="button" class="ms-btn" aria-haspopup="true" aria-expanded="false"><span id="ms-label">All brands</span><span aria-hidden="true">▾</span></button>
+        <div class="ms-pop" hidden>
+          <div class="ms-list" id="ms-list"></div>
+          <div class="ms-foot"><button type="button" class="btn" id="ms-all">All brands</button><button type="button" class="btn" id="ms-done">Done</button></div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn" id="reset" hidden>Clear filters</button>
+    <span class="stamp">Snapshot of the POA sheet taken <b id="built">—</b></span>
+  </div>
+
+  <section class="tiles">
+    <div class="card tile accent"><span class="lbl">Tactics in plan</span><span class="big" id="k-tot">—</span><span class="sub"><span id="k-nokpi">—</span> without a numeric KPI</span></div>
+    <div class="card tile accent"><span class="lbl">Total budget (EGP)</span><span class="big" id="k-bud">—</span><span class="sub"><span id="k-bmov">—</span> (<span id="k-bsh">—</span>) on tactics already moving</span></div>
+    <div class="card tile accent"><span class="lbl">Avg. progress to KPI</span><span class="big" id="k-avg">—</span><span class="sub" id="k-chg">—</span></div>
+    <div class="card tile"><span class="lbl">KPI reached</span><span class="big" id="k-done">—</span><span class="sub">at 100% or more of target</span></div>
+    <div class="card tile"><span class="lbl">In progress</span><span class="big" id="k-prog">—</span><span class="sub">some achievement logged</span></div>
+    <div class="card tile"><span class="lbl">Not started / pending</span><span class="big" id="k-idle">—</span><span class="sub"><span id="k-pend">—</span> marked pending</span></div>
+    <div class="card tile"><span class="lbl">Updated this week</span><span class="big" id="k-upd">—</span><span class="sub">rows filled in for the latest week</span></div>
+  </section>
+
+  <section class="card">
+    <div class="card-h"><h2>Average progress to KPI, week by week</h2><p>Achievement to date ÷ KPI target, capped at 100%, averaged over tactics with a numeric KPI.</p></div>
+    <div class="card-c"><div class="chart" id="trend"></div></div>
+  </section>
+
+  <section class="grid2">
+    <div class="stack">
+      <div class="card"><div class="card-h"><h2>Status by brand manager</h2><p>Click a manager to filter the whole page.</p></div>
+        <div class="card-c"><div class="legend"></div><div class="chart" id="c-owner"></div></div></div>
+      <div class="card"><div class="card-h"><h2>Status by brand</h2><p>For the manager selected. Click brands to add them to, or remove them from, the filter.</p></div>
+        <div class="card-c"><div class="legend"></div><div class="chart" id="c-brand"></div></div></div>
+    </div>
+    <div class="card"><div class="card-h"><h2>Status by activity type</h2><p>Tactics per marketing-mix bucket, for the manager and brands selected.</p></div>
+      <div class="card-c"><div class="legend"></div><div class="chart" id="c-type"></div></div></div>
+  </section>
+
+  <section class="card">
+    <div class="card-h"><h2>All tactics</h2><p>Row is the line number in the Excel sheet. Click a column header to sort.</p></div>
+    <div class="card-c">
+      <div class="tools">
+        <input type="search" id="q" placeholder="Search activity, brand, KPI…" aria-label="Search tactics">
+        <select id="st" aria-label="Status">
+          <option value="">All statuses</option><option value="attention">Needs attention</option><option value="Done">KPI reached</option>
+          <option value="In progress">In progress</option><option value="Pending">Pending</option><option value="Not started">Not started</option><option value="No numeric KPI">No numeric KPI</option>
+        </select>
+        <span class="count"><span id="shown">—</span> tactics shown</span>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr>
+          <th><button data-k="row">Row</button></th><th><button data-k="owner">Manager</button></th><th><button data-k="brand">Brand</button></th>
+          <th><button data-k="activity">Activity</button></th><th class="hn"><button data-k="type">Type</button></th><th class="hn"><button data-k="segment">Segment</button></th>
+          <th class="hn"><button data-k="kpi">KPI</button></th><th><button data-k="target">Target</button></th><th><button data-k="achieved">Achieved</button></th>
+          <th><button data-k="progress">Progress</button></th><th><button data-k="status">Status</button></th><th class="hn"><button data-k="last">Last update</button></th>
+          <th class="hn"><button data-k="budget">Budget (EGP)</button></th>
+        </tr></thead>
+        <tbody id="tb"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <details class="card">
+    <summary>How the numbers are worked out</summary>
+    <dl>
+      <dt>Achieved</dt><dd>The highest number entered in the weekly columns (they are cumulative to date), or "Total achievements" if that is higher.</dd>
+      <dt>Progress</dt><dd>Achieved ÷ KPI target.</dd>
+      <dt>KPI reached / In progress / Not started</dt><dd>Progress of 100% or more / above 0 / 0. "Pending" means a week says PENDING and nothing is achieved yet.</dd>
+      <dt>No numeric KPI</dt><dd>The KPI cell is empty or "-", so progress can't be measured.</dd>
+      <dt>Updated this week</dt><dd>The tactic has a number or PENDING in the latest week column anyone filled in.</dd>
+      <dt>Needs attention</dt><dd>Not started, pending, or not updated this week, and KPI not yet reached.</dd>
+      <dt>Snapshot</dt><dd>This page is a copy of the sheet made every Sunday at 11:45 Cairo time. Changes made in Excel after that show up the following Sunday.</dd>
+    </dl>
+  </details>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const STAT = ['Done', 'In progress', 'Pending', 'Not started', 'No numeric KPI'];
+const FILL = { 'Done': 'var(--done)', 'In progress': 'var(--prog)', 'Pending': 'var(--pend)', 'Not started': 'var(--none)', 'No numeric KPI': 'var(--nokpi)' };
+const NAME = { 'Done': 'KPI reached', 'In progress': 'In progress', 'Pending': 'Pending', 'Not started': 'Not started', 'No numeric KPI': 'No numeric KPI' };
+const T = DATA.tactics, WEEKS = DATA.weeks, REVIEW = WEEKS[WEEKS.length - 1] || null;
+const $ = (id) => document.getElementById(id);
+const fInt = (v) => Math.round(v).toLocaleString('en');
+const fPct = (v, d = 1) => v == null ? '—' : (v * 100).toFixed(d) + '%';
+const fBig = (v) => v == null ? '—' : Math.abs(v) >= 10000 ? new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(v) : fInt(Math.round(v * 100) / 100);
+const fDay = (s) => new Date(s + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const S = { owner: '', brands: [] };
+const uniq = (a) => [...new Set(a)];
+const sel = () => T.filter((t) => (!S.owner || t.owner === S.owner) && (!S.brands.length || S.brands.includes(t.brand)));
+const avgTo = (ts, week) => {
+  const k = ts.filter((t) => t.target);
+  if (!k.length) return null;
+  return k.reduce((a, t) => {
+    const vals = Object.entries(t.weeks).filter(([w, v]) => w <= week && v != null).map(([, v]) => v);
+    return a + Math.min((vals.length ? Math.max(...vals) : 0) / t.target, 1);
+  }, 0) / k.length;
+};
+const svgEl = (tag, attrs, parent) => { const e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.append(e); return e; };
+const tipIn = (el) => { const t = document.createElement('div'); t.className = 'tip'; t.hidden = true; el.append(t); return t; };
+const showTip = (tip, el, x, y, head, lines) => {
+  tip.replaceChildren();
+  const h = document.createElement('div'); h.className = 'h'; h.textContent = head; tip.append(h);
+  lines.forEach(([c, txt]) => { const d = document.createElement('div'); if (c) { const i = document.createElement('i'); i.style.background = c; d.append(i); } d.append(txt); tip.append(d); });
+  tip.hidden = false;
+  tip.style.left = Math.max(0, Math.min(el.clientWidth - tip.offsetWidth, x - tip.offsetWidth / 2)) + 'px';
+  tip.style.top = Math.max(0, y - tip.offsetHeight - 8) + 'px';
+};
+
+document.querySelectorAll('.legend').forEach((l) => STAT.forEach((s) => { const sp = document.createElement('span'); const i = document.createElement('i'); i.style.background = FILL[s]; sp.append(i, NAME[s]); l.append(sp); }));
+$('built').textContent = DATA.built;
+
+function drawFilters() {
+  const o = $('owner');
+  o.replaceChildren(new Option('Whole team', ''), ...uniq(T.map((t) => t.owner)).sort().map((n) => new Option(n, n)));
+  o.value = S.owner;
+  const names = uniq(T.filter((t) => !S.owner || t.owner === S.owner).map((t) => t.brand)).sort((a, b) => a.localeCompare(b));
+  $('ms-list').replaceChildren(...names.map((n) => {
+    const l = document.createElement('label'), c = document.createElement('input');
+    c.type = 'checkbox'; c.checked = S.brands.includes(n);
+    c.onchange = () => { S.brands = c.checked ? [...S.brands.filter((x) => x !== n), n] : S.brands.filter((x) => x !== n); render(); };
+    l.append(c, n); return l;
+  }));
+  $('ms-label').textContent = !S.brands.length ? 'All brands' : S.brands.length === 1 ? S.brands[0] : S.brands.length + ' brands';
+  $('ms-label').title = S.brands.join(', ');
+  $('reset').hidden = !S.owner && !S.brands.length;
+}
+$('owner').onchange = (e) => { S.owner = e.target.value; S.brands = S.brands.filter((b) => T.some((t) => t.brand === b && (!S.owner || t.owner === S.owner))); render(); };
+$('reset').onclick = () => { S.owner = ''; S.brands = []; render(); };
+$('ms-all').onclick = () => { S.brands = []; render(); };
+(() => {
+  const ms = $('ms'), btn = ms.querySelector('.ms-btn'), pop = ms.querySelector('.ms-pop');
+  const openIt = (on) => { pop.hidden = !on; btn.setAttribute('aria-expanded', String(on)); };
+  btn.onclick = () => openIt(pop.hidden);
+  $('ms-done').onclick = () => openIt(false);
+  document.addEventListener('click', (e) => { if (!pop.hidden && !e.composedPath().includes(ms)) openIt(false); });
+  ms.addEventListener('keydown', (e) => { if (e.key === 'Escape') { openIt(false); btn.focus(); } });
+})();
+
+function drawFigures(ts) {
+  const n = (s) => ts.filter((t) => t.status === s).length;
+  const k = ts.filter((t) => t.progress != null);
+  const budget = ts.reduce((a, t) => a + (t.budget || 0), 0);
+  const moving = ts.filter((t) => t.status === 'Done' || t.status === 'In progress').reduce((a, t) => a + (t.budget || 0), 0);
+  const upd = ts.filter((t) => REVIEW && REVIEW in t.weeks).length;
+  const avg = k.length ? k.reduce((a, t) => a + Math.min(t.progress, 1), 0) / k.length : null;
+  const set = (id, v) => { $(id).textContent = v; };
+  set('h-upd', fInt(upd)); set('h-tot', fInt(ts.length)); set('h-week', REVIEW ? fDay(REVIEW) : '—'); set('h-done', fInt(n('Done'))); set('h-idle', fInt(n('Pending') + n('Not started')));
+  set('k-tot', fInt(ts.length)); set('k-nokpi', fInt(n('No numeric KPI'))); set('k-bud', fBig(budget)); set('k-bmov', fBig(moving)); set('k-bsh', budget ? fPct(moving / budget, 0) : '—');
+  set('k-avg', fPct(avg)); set('k-done', fInt(n('Done'))); set('k-prog', fInt(n('In progress'))); set('k-idle', fInt(n('Pending') + n('Not started'))); set('k-pend', fInt(n('Pending'))); set('k-upd', fInt(upd));
+  const chg = $('k-chg'); chg.className = 'sub';
+  if (WEEKS.length >= 2) {
+    const a = avgTo(ts, WEEKS[WEEKS.length - 1]), b = avgTo(ts, WEEKS[WEEKS.length - 2]);
+    if (a != null && b != null) { const p = (a - b) * 100; chg.textContent = (p > 0 ? '+' : p < 0 ? '−' : '±') + Math.abs(p).toFixed(1) + ' pts vs week of ' + fDay(WEEKS[WEEKS.length - 2]); if (p > 0) chg.className = 'sub up'; }
+    else chg.textContent = '—';
+  } else chg.textContent = '—';
+}
+
+function drawTrend(ts) {
+  const el = $('trend'); el.replaceChildren();
+  const pts = WEEKS.map((w) => ({ w, v: avgTo(ts, w), u: ts.filter((t) => w in t.weeks).length })).filter((p) => p.v != null);
+  const W = Math.max(280, el.clientWidth), H = 220, ml = 40, mr = 56, mt = 14, mb = 28;
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}` }, el);
+  const max = Math.max(0.2, ...pts.map((p) => p.v)) * 1.15, step = max > .6 ? .2 : max > .3 ? .1 : .05;
+  const top = Math.ceil(max / step) * step;
+  const y = (v) => H - mb - (v / top) * (H - mb - mt);
+  const x = (i) => pts.length < 2 ? (ml + W - mr) / 2 : ml + 10 + i * (W - mr - ml - 20) / (pts.length - 1);
+  for (let v = 0; v <= top + 1e-9; v += step) {
+    svgEl('line', { x1: ml, x2: W - 8, y1: y(v), y2: y(v), stroke: 'var(--line)', 'stroke-dasharray': v ? '3 3' : '' }, svg);
+    svgEl('text', { x: ml - 6, y: y(v), dy: '.32em', 'text-anchor': 'end' }, svg).textContent = Math.round(v * 100) + '%';
+  }
+  const defs = svgEl('defs', {}, svg), lg = svgEl('linearGradient', { id: 'lg' }, defs);
+  [['0', '#3cc8f0'], ['.4', '#2f7fe8'], ['.75', '#7b4fe0'], ['1', '#c74ad8']].forEach(([o, c]) => svgEl('stop', { offset: o, 'stop-color': c }, lg));
+  if (pts.length) {
+    svgEl('path', { d: pts.map((p, i) => (i ? 'L' : 'M') + x(i) + ' ' + y(p.v)).join(' ') + ` L${x(pts.length - 1)} ${y(0)} L${x(0)} ${y(0)} Z`, fill: '#7b4fe0', 'fill-opacity': .08 }, svg);
+    svgEl('path', { d: pts.map((p, i) => (i ? 'L' : 'M') + x(i) + ' ' + y(p.v)).join(' '), fill: 'none', stroke: 'url(#lg)', 'stroke-width': 2.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, svg);
+  }
+  const tip = tipIn(el);
+  pts.forEach((p, i) => {
+    svgEl('circle', { cx: x(i), cy: y(p.v), r: 3.5, fill: 'var(--card)', stroke: '#7b4fe0', 'stroke-width': 2 }, svg);
+    svgEl('text', { x: x(i), y: H - 8, 'text-anchor': 'middle' }, svg).textContent = fDay(p.w);
+    if (i === pts.length - 1) { const t = svgEl('text', { x: x(i) + 8, y: y(p.v), dy: '.32em', style: 'fill: var(--fg); font-weight: 600' }, svg); t.textContent = fPct(p.v); }
+    const hit = svgEl('rect', { x: x(i) - 20, y: 0, width: 40, height: H, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', () => showTip(tip, el, x(i) * el.clientWidth / W, y(p.v) * el.clientWidth / W, 'Week of ' + fDay(p.w), [[null, fPct(p.v) + ' average progress'], [null, fInt(p.u) + ' tactics updated']]));
+    hit.addEventListener('mouseleave', () => { tip.hidden = true; });
+  });
+}
+
+function stacked(el, groups, onClick) {
+  el.replaceChildren();
+  const W = Math.max(280, el.clientWidth), rowH = 28, H = Math.max(40, groups.length * rowH + 8);
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}` }, el);
+  const ml = Math.min(W * .42, 170), maxN = Math.max(1, ...groups.map((g) => g.total)), nw = 34;
+  const x = (v) => ml + (v / maxN) * (W - ml - nw);
+  const tip = tipIn(el);
+  groups.forEach((g, i) => {
+    const yy = i * rowH + 4, row = svgEl('g', { opacity: g.dim ? .3 : 1, style: onClick ? 'cursor:pointer' : '' }, svg);
+    const label = svgEl('text', { x: ml - 10, y: yy + 10, dy: '.32em', 'text-anchor': 'end', style: g.dim ? '' : 'fill: var(--fg)' }, row);
+    label.textContent = g.name;
+    let s = g.name; while (s.length > 3 && label.getComputedTextLength() > ml - 14) { s = s.slice(0, -1); label.textContent = s.trimEnd() + '…'; }
+    svgEl('rect', { x: ml, y: yy, width: x(maxN) - ml, height: 20, rx: 4, fill: 'var(--soft)' }, row);
+    let acc = 0;
+    STAT.forEach((st) => { const n = g.counts[st]; if (!n) return; svgEl('rect', { x: x(acc), y: yy, width: Math.max(1, x(acc + n) - x(acc) - 1.5), height: 20, rx: 4, fill: FILL[st] }, row); acc += n; });
+    svgEl('text', { x: x(acc) + 8, y: yy + 10, dy: '.32em', style: 'font-weight: 500' }, row).textContent = fInt(g.total);
+    const hit = svgEl('rect', { x: 0, y: yy - 4, width: W, height: rowH, fill: 'transparent' }, row);
+    hit.addEventListener('mousemove', () => showTip(tip, el, x(acc / 2) * el.clientWidth / W, yy * el.clientWidth / W, g.name, STAT.filter((st) => g.counts[st]).map((st) => [FILL[st], g.counts[st] + ' ' + NAME[st].toLowerCase()])));
+    hit.addEventListener('mouseleave', () => { tip.hidden = true; });
+    if (onClick) hit.addEventListener('click', () => onClick(g.name));
+  });
+}
+const group = (ts, key) => {
+  const m = new Map(); ts.forEach((t) => { if (!m.has(t[key])) m.set(t[key], []); m.get(t[key]).push(t); });
+  return [...m].map(([name, rs]) => ({ name, total: rs.length, counts: Object.fromEntries(STAT.map((s) => [s, rs.filter((t) => t.status === s).length])) })).sort((a, b) => b.total - a.total);
+};
+
+let sortK = 'row', sortD = 1;
+document.querySelectorAll('th button').forEach((b) => b.addEventListener('click', () => {
+  const k = b.dataset.k;
+  sortD = sortK === k ? -sortD : (['row', 'owner', 'brand', 'activity', 'type', 'segment', 'kpi', 'status'].includes(k) ? 1 : -1);
+  sortK = k;
+  document.querySelectorAll('th').forEach((th) => th.removeAttribute('aria-sort'));
+  b.parentElement.setAttribute('aria-sort', sortD > 0 ? 'ascending' : 'descending');
+  drawTable();
+}));
+$('q').addEventListener('input', () => drawTable());
+$('st').addEventListener('change', () => drawTable());
+function drawTable() {
+  const q = $('q').value.trim().toLowerCase(), st = $('st').value;
+  const rows = sel().filter((t) => (!st || (st === 'attention' ? (t.status === 'Not started' || t.status === 'Pending' || !(REVIEW in t.weeks)) && t.status !== 'Done' : t.status === st))
+    && (!q || [t.activity, t.brand, t.kpi, t.owner, t.type, t.segment].join(' ').toLowerCase().includes(q)))
+    .sort((a, b) => { const A = a[sortK], B = b[sortK]; if (A == null && B == null) return 0; if (A == null) return 1; if (B == null) return -1; return (typeof A === 'number' ? A - B : String(A).localeCompare(String(B))) * sortD; });
+  $('shown').textContent = fInt(rows.length);
+  const tb = $('tb'); tb.replaceChildren();
+  rows.forEach((t) => {
+    const tr = document.createElement('tr');
+    const td = (txt, cls) => { const c = document.createElement('td'); if (cls) c.className = cls; c.textContent = txt; tr.append(c); return c; };
+    td(String(t.row), 'n m'); td(t.owner); td(t.brand); td(t.activity, 'a'); td(t.type, 'hn m'); td(t.segment, 'hn m'); td(t.kpi, 'hn m');
+    td(t.target == null ? '—' : fBig(t.target), 'n'); td(fBig(t.achieved), 'n');
+    const p = td(''), w = document.createElement('div'), bar = document.createElement('span'), fill = document.createElement('i'), lab = document.createElement('b');
+    w.className = 'prog'; fill.style.width = Math.min(100, (t.progress || 0) * 100) + '%'; bar.append(fill); lab.textContent = t.progress == null ? '—' : fPct(t.progress, 0); w.append(bar, lab); p.append(w);
+    const sc = td(''), chip = document.createElement('span'); chip.className = 'chip s-' + t.status.replace(/ /g, '-'); chip.textContent = NAME[t.status]; sc.append(chip);
+    td(t.last ? fDay(t.last) : '—', 'hn m'); td(t.budget == null ? '—' : fInt(t.budget), 'n hn');
+    tb.append(tr);
+  });
+}
+
+function render() {
+  drawFilters();
+  const ts = sel();
+  drawFigures(ts);
+  drawTrend(ts);
+  stacked($('c-owner'), group(T.filter((t) => !S.brands.length || S.brands.includes(t.brand)), 'owner').map((g) => ({ ...g, dim: S.owner && g.name !== S.owner })),
+    (name) => { S.owner = S.owner === name ? '' : name; S.brands = S.brands.filter((b) => T.some((t) => t.brand === b && (!S.owner || t.owner === S.owner))); render(); });
+  stacked($('c-brand'), group(T.filter((t) => !S.owner || t.owner === S.owner), 'brand').map((g) => ({ ...g, dim: S.brands.length && !S.brands.includes(g.name) })),
+    (name) => { S.brands = S.brands.includes(name) ? S.brands.filter((b) => b !== name) : [...S.brands, name]; render(); });
+  stacked($('c-type'), group(ts, 'type'), null);
+  drawTable();
+}
+let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(render, 150); });
+render();
+</script>
+</body>
+</html>
