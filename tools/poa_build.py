@@ -1,6 +1,6 @@
 """Build the password-protected POA snapshot page.
 
-Usage: POA_PASSWORD=... python3 -I poa_build.py POA.xlsx OUT_DIR
+Usage: [POA_PASSWORD=...] python3 -I poa_build.py POA.xlsx OUT_DIR  (no POA_PASSWORD = open page)
 Writes OUT_DIR/index.html: a static page whose dashboard is AES-256-GCM
 encrypted with a key derived from the password (PBKDF2-SHA256), decrypted
 in the browser with WebCrypto. Nothing readable is stored in the page.
@@ -122,15 +122,18 @@ def encrypt(plain, password):
 def main():
     src, out = sys.argv[1], sys.argv[2]
     password = os.environ.get("POA_PASSWORD", "")
-    if len(password) < 8:
-        raise SystemExit("Set POA_PASSWORD (8+ characters)")
+    if password and len(password) < 8:
+        raise SystemExit("POA_PASSWORD must be 8+ characters (or unset for an open page)")
     tactics, weeks = read_sheet(src)
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=2)))
     payload = {"tactics": tactics, "weeks": weeks, "built": now.strftime("%a %d %b %Y, %H:%M") + " Cairo"}
     inner = open(os.path.join(HERE, "dashboard.html"), encoding="utf-8").read()
     inner = inner.replace("/*__DATA__*/null", json.dumps(payload, ensure_ascii=False).replace("</", "<\\/"))
-    lock = open(os.path.join(HERE, "lock.html"), encoding="utf-8").read()
-    page = lock.replace("/*__BLOB__*/null", json.dumps(encrypt(inner, password)))
+    if password:
+        lock = open(os.path.join(HERE, "lock.html"), encoding="utf-8").read()
+        page = lock.replace("/*__BLOB__*/null", json.dumps(encrypt(inner, password)))
+    else:
+        page = inner  # no password: the dashboard itself, readable by anyone with the link
     os.makedirs(out, exist_ok=True)
     with open(os.path.join(out, "index.html"), "w", encoding="utf-8") as f:
         f.write(page)
